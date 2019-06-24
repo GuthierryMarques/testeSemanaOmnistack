@@ -13,7 +13,7 @@ module.exports = {
         const { author,  place,  description,   hashtags  } = req.body;
         const { filename: image } = req.file;
 
-        const[name] = image.split('.');
+        const [ name ] = image.split('.');
         const fileName = `${name}.jpg`;
 
         await sharp(req.file.path)
@@ -30,7 +30,7 @@ module.exports = {
             place,
             description,
             hashtags,
-            fileName,
+            image: fileName,
         });
 
         req.io.emit('post', post);
